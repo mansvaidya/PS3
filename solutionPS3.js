@@ -136,11 +136,15 @@ if (user.role=="admin) {
     
   // 2) If they do, check the role and if its admin send back a form with a secret token in the url
 /manasi notes -the password and name match so return with a positive message 
-    return ("True Admin") { 
+    return "True Admin" { 
+ 
+      else {
+    res.sendStatus(401); and return "You are not the admin, you need to be an admin to access the contacts" 
     
   // we should check if user is in DB if so send back security token
   // check is not implemented here but we send back a token with value secret-token
   // we dynamically create a form with a hidden field that contains the token - secret-token (no need to change this)
+      
     let { name, password} = req.body;
   if (name=="diana prince" && password=="manasitestps3"){
         let form = `<form action="/contacts" method="get">
