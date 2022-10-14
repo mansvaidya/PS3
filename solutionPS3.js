@@ -38,6 +38,13 @@ var contacts = [
     password: "test1"
   },
   {
+    name: "manasi vaidya",
+    age: 26,
+    email: "manasiv@mit.edu",
+    role: "admin",
+    password: "manasitestps3"
+  },
+  {
     name: "bruce wayne",
     age: 32,
     email: "bruce@mit.edu",
@@ -77,7 +84,7 @@ app.get("/login", (req, res) => {
 app.post("/auth", (req, res) => {
   let { name, password } = req.body;
   // check the user name and password
-  if(name == "name" && password == "password") {
+  if(name == "diana prince" && password == "manasitestps3") {
   // we should check if user is in DB if so send back security token
   // check is not implemented here but we send back a token with value secret-token
   // we dynamically create a form with a hidden field that contains the token
