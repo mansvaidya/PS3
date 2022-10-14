@@ -108,6 +108,63 @@ app.get("/contacts", authenticate, (req, res) => {
   }
 });
 
+app.post("/auth", (req, res) => {
+  let { name, password} = req.body;
+  if (name=="diana prince" && password=="test3"){
+        let form = `<form action="/contacts" method="get">
+        <label for="name">Get Contacts </label>
+        <input id="token" type="hidden" name="token" value="secret-token">
+        <input type="submit" value="OK">
+        </form>`;
+        res.send(form);   
+    } else {
+      ressendStatus(401)
+    }
+  });
+  
+
+// check the user name and password
+  
+  // PS3 - This is where you need to make chnages
+  // 1) Check that the name and password match a contact
+
+/manasi notes -check if the name and password match with each other 
+if (user.role=="admin) {
+    let { name, password} = req.body;   
+    if (name =="diana prince" and password == "manasitestps3") {
+   
+    
+  // 2) If they do, check the role and if its admin send back a form with a secret token in the url
+/manasi notes -the password and name match so return with a positive message 
+    return ("True Admin") { 
+    
+  // we should check if user is in DB if so send back security token
+  // check is not implemented here but we send back a token with value secret-token
+  // we dynamically create a form with a hidden field that contains the token - secret-token (no need to change this)
+    let { name, password} = req.body;
+  if (name=="diana prince" && password=="manasitestps3"){
+        let form = `<form action="/contacts" method="get">
+        <label for="name">Get Contacts </label>
+        <input id="token" type="hidden" name="token" value="secret-token">
+        <input type="submit" value="OK">
+        </form>`;
+        res.send(form);   
+    } else {
+      ressendStatus(401)
+    }
+  });
+      
+//athenticate is used to check if the  secret token is correct
+app.get("/contacts", authenticate, (req, res) => {
+  //authenticate adds user=admin to the request object if the token is correct
+  // we can use this to check if the user is an admin
+  if(req.user == "admin") {
+    res.json(contacts);
+  } else {
+    res.sendStatus(401);
+  }
+});
+
 // add authentication to the post request to /contact to allow only users with role = admin to add a contact
 app.post("/contact", (req, res) => {
   // add a contact
